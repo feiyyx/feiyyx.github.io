@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feiyyx.cc">
-  <title>2020年5月份月度碎碎念 | feiyyx&#39;s Blog</title>
+  <title>JavaScript设计模式&lt;十四&gt;——享元模式 | feiyyx&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2020年5月份月度碎碎念碎碎碎……碎碎念 五月份算是功德圆满的一个月。">
-<meta name="keywords" content="杂谈">
+  <meta name="description" content="JavaScript设计模式&amp;lt;十四&amp;gt;——享元模式〇、前言&amp;amp;介绍 这一次带来的是享元模式的学习。">
+<meta name="keywords" content="TypeScript,JavaScript,设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020年5月份月度碎碎念">
-<meta property="og:url" content="http://feiyyx.cc/2020/06/01/2020年5月份月度碎碎念/index.html">
+<meta property="og:title" content="JavaScript设计模式&lt;十四&gt;——享元模式">
+<meta property="og:url" content="http://feiyyx.cc/2020/06/18/JavaScript设计模式<十四>——享元模式/index.html">
 <meta property="og:site_name" content="feiyyx&#39;s Blog">
-<meta property="og:description" content="2020年5月份月度碎碎念碎碎碎……碎碎念 五月份算是功德圆满的一个月。">
+<meta property="og:description" content="JavaScript设计模式&amp;lt;十四&amp;gt;——享元模式〇、前言&amp;amp;介绍 这一次带来的是享元模式的学习。">
 <meta property="og:locale" content="zh-Hans en">
-<meta property="og:updated_time" content="2020-06-01T06:53:01.661Z">
+<meta property="og:image" content="https://i.loli.net/2020/06/17/fzhtMY18CJpacvX.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/06/18/VWKrIa9HgikxwqX.png">
+<meta property="og:updated_time" content="2020-06-18T09:48:47.591Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2020年5月份月度碎碎念">
-<meta name="twitter:description" content="2020年5月份月度碎碎念碎碎碎……碎碎念 五月份算是功德圆满的一个月。">
+<meta name="twitter:title" content="JavaScript设计模式&lt;十四&gt;——享元模式">
+<meta name="twitter:description" content="JavaScript设计模式&amp;lt;十四&amp;gt;——享元模式〇、前言&amp;amp;介绍 这一次带来的是享元模式的学习。">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/17/fzhtMY18CJpacvX.jpg">
   
     <link rel="alternative" href="/atom.xml" title="feiyyx&#39;s Blog" type="application/atom+xml">
   
@@ -159,49 +162,85 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2020年5月份月度碎碎念" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JavaScript设计模式&lt;十四&gt;——享元模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      2020年5月份月度碎碎念
+      JavaScript设计模式&lt;十四&gt;——享元模式
     </h1>
   
 
         
-        <a href="/2020/06/01/2020年5月份月度碎碎念/" class="archive-article-date">
-  	<time datetime="2020-06-01T06:53:01.661Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
+        <a href="/2020/06/18/JavaScript设计模式<十四>——享元模式/" class="archive-article-date">
+  	<time datetime="2020-06-18T09:48:47.590Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="2020年5月份月度碎碎念"><a href="#2020年5月份月度碎碎念" class="headerlink" title="2020年5月份月度碎碎念"></a>2020年5月份月度碎碎念</h1><h2 id="碎碎碎……碎碎念"><a href="#碎碎碎……碎碎念" class="headerlink" title="碎碎碎……碎碎念"></a>碎碎碎……碎碎念</h2><ul>
-<li><p>五月份算是功德圆满的一个月。<a id="more"></a></p>
+        <h1 id="JavaScript设计模式-lt-十四-gt-——享元模式"><a href="#JavaScript设计模式-lt-十四-gt-——享元模式" class="headerlink" title="JavaScript设计模式&lt;十四&gt;——享元模式"></a>JavaScript设计模式&lt;十四&gt;——享元模式</h1><h2 id="〇、前言-amp-介绍"><a href="#〇、前言-amp-介绍" class="headerlink" title="〇、前言&amp;介绍"></a>〇、前言&amp;介绍</h2><ul>
+<li><p>这一次带来的是享元模式的学习。<a id="more"></a></p>
 </li>
-<li><p>前半个月搞完自己的毕业设计和答辩，剩下的半个月就是玩。结果一玩就是剩下半个月都搭进去了，我有罪.jpg</p>
+<li><p><em>享元模式是一种软件设计模式。它使用共享物件，用来尽可能减少内存使用量以及分享资讯给尽可能多的相似物件；它适合用于当大量物件只是重复因而导致无法令人接受的使用大量内存。通常物件中的部分状态是可以分享。常见做法是把它们放在外部数据结构，当需要使用时再将它们传递给享元</em>。—摘自<a href="https://zh.wikipedia.org/zh-cn/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">维基百科</a></p>
 </li>
-<li><p>玩着玩着我新开的坑就给我忘了，说好记录一下项目中遇到的问题也给我鸽叻（不过还是记录了一篇）。感觉自己也不能再摸下去了，我决定这个六月：</p>
+<li><p>总结一下，简单来说，享元模式就是一种以时间换取空间的设计模式。为什么说是以时间换取空间，因为本来创建某一种对象的时候，当调用该对象创建方法的时候，是一条路走到底的。</p>
+</li>
+<li><p>而当使用享元模式的时候，因为剥离了对象的公有属性独立作为一个享元对象存在，此时再创建该对象的时候，首先会去享元工厂内检查是否有该对象所使用的属性，之后再根据返回的结果决定是复用还是创建新享元对象，最后再生成该对象，这样一通折腾时间就被拉长了，但是节省下了内存空间。</p>
+</li>
+<li><p>接下来是代码环节～</p>
+</li>
+</ul>
+<center><img src="https://i.loli.net/2020/06/17/fzhtMY18CJpacvX.jpg" alt="1.JPG"></center>
+
+
+<h2 id="一、分析过程"><a href="#一、分析过程" class="headerlink" title="一、分析过程"></a>一、分析过程</h2><ul>
+<li><p>享元模式内部分为<strong>享元（对象外在状态）类、情景（对象内在状态）类、客户端和享元工厂</strong>四个模块。</p>
+</li>
+<li><p><strong>享元类</strong>和<strong>情景类</strong>分别就是原始对象类拆分后的两个类，分别管理原始对象的不同方面的属性，总的来说，<strong>享元类</strong>就是负责存储对象不易改变或者干脆就是不会改变的属性，而<strong>情景类</strong>负责存储的则是对象里易于改变的属性，并且只读引用享元类中存储的实例后成为完整的原始对象。</p>
+</li>
+<li><p><strong>享元工厂</strong>会接收来自客户端的参数，然后负责根据这些参数在享元类中查找已存在属性或者添加未存在属性，最后返回该属性给客户端。</p>
+</li>
+<li><p><strong>客户端</strong>负责存储享元类和情景类的实例，并且会计算、调用享元对象，并且将这些参数传递给享元工厂获取属性，并且会将这些享元类作为配置数据传递给情景类，最后生成完整的原始对象。</p>
+</li>
+<li><p>来设想一个场景，你在做一款STG，然后要生成大量的士兵<code>Soldier</code>，但是做着做着发现当士兵生成地稍微多了一点就卡爆了，这个时候我们就可以使用我们的享元模式，把<code>Soldier</code>身上的属性分离一下：</p>
 <ul>
-<li>（1）复习之前写的设计模式。</li>
-<li>（2）继续学习新的设计模式。</li>
-<li>（3）接触除了Koa2之外的NodeJS后端框架，例如egg.js。</li>
-<li>（4）深入学习一下React（<del>话说这个口号好像喊了好久了XD</del>）</li>
+<li>让<code>SoldierType</code>类存储士兵的兵种、血量、移动速度等属性；</li>
+<li>原本的<code>Soldier</code>作为一个类存储士兵的坐标和战斗指令即可，当有需要知道该士兵的其他属性，我们可以从<code>SolidierType</code>类中引用。下面是TS代码:</li>
 </ul>
 </li>
-<li><p>绿厂那边也说了入职在八月份，剩下的时间就充实充实自己，多陪陪家里人好叻。</p>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SoldierType</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> SoldierType: string;</span><br><span class="line">    <span class="keyword">public</span> SoldierSpeed: number;</span><br><span class="line">    <span class="keyword">public</span> SoldierHP: number;</span><br><span class="line">    <span class="keyword">public</span> TypeID: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Soldier</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> SoldierType: SoldierType;</span><br><span class="line">    <span class="keyword">public</span> name;</span><br><span class="line">    <span class="keyword">public</span> x: number;</span><br><span class="line">    <span class="keyword">public</span> y: number;</span><br><span class="line">    <span class="keyword">constructor</span>(x, y, name, SoldierType: SoldierType) &#123;</span><br><span class="line">        <span class="keyword">this</span>.x = x;</span><br><span class="line">        <span class="keyword">this</span>.y = y;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.SoldierType = SoldierFactory.factory.getSoldierType(SoldierType);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> xMove() &#123;</span><br><span class="line">        <span class="keyword">this</span>.x += <span class="keyword">this</span>.SoldierType.SoldierSpeed;</span><br><span class="line">        console.log(`Soldier $&#123;<span class="keyword">this</span>.name&#125; move $&#123;<span class="keyword">this</span>.SoldierType.SoldierSpeed&#125; along the X-axis`);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> yMove() &#123;</span><br><span class="line">        <span class="keyword">this</span>.y += <span class="keyword">this</span>.SoldierType.SoldierSpeed;</span><br><span class="line">        console.log(`Soldier $&#123;<span class="keyword">this</span>.name&#125; move $&#123;<span class="keyword">this</span>.SoldierType.SoldierSpeed&#125; along the Y-axis`);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后就是建设我们的享元工厂，我们命名为<code>SoldierFactory</code>，我们想要获取或者新增SoldierType都在这里面进行实现，并且它还内部维护了一个SoldierType类型的数组以方便判断是否存在，在这个例子里还使用了单例模式限制工厂的唯一性。</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> SoldierFactory &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> factory: SoldierFactory;</span><br><span class="line">    <span class="keyword">public</span> SoldierTypeCollection: SoldierType[];</span><br><span class="line">    <span class="comment">/*--设定新的兵种--*/</span></span><br><span class="line">    <span class="keyword">public</span> setSoldierType(<span class="keyword">type</span>: SoldierType) &#123;</span><br><span class="line">        <span class="keyword">type</span>.TypeID = <span class="keyword">this</span>.SoldierTypeCollection.length+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">this</span>.SoldierTypeCollection.push(<span class="keyword">type</span>);</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">type</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*--根据ID获取列表内兵种--*/</span></span><br><span class="line">    <span class="keyword">public</span> getSoldierType(<span class="keyword">type</span>: SoldierType) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.SoldierTypeCollection) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.SoldierTypeCollection[i].TypeID === <span class="keyword">type</span>.TypeID) &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'Existed!'</span>)</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>.SoldierTypeCollection[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">type</span>.TypeID = <span class="keyword">this</span>.SoldierTypeCollection.length+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">this</span>.SoldierTypeCollection.push(<span class="keyword">type</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">type</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*--显示兵种列表--*/</span></span><br><span class="line">    <span class="keyword">public</span> showSoldierTypeList() &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.SoldierTypeCollection) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`----------ID: <span class="subst">$&#123;this.SoldierTypeCollection[i].TypeID&#125;</span>-------------`</span>)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.SoldierTypeCollection[i])</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*--初始化工厂--*/</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> initFactory() &#123;</span><br><span class="line">        <span class="keyword">if</span>(SoldierFactory.factory === <span class="literal">undefined</span>) &#123;</span><br><span class="line">            SoldierFactory.factory = <span class="keyword">new</span> SoldierFactory();</span><br><span class="line">            SoldierFactory.factory.SoldierTypeCollection = [];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'Factory has already created!'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>来看一下代码的整体效果：</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">SoldierFactory.initFactory()</span><br><span class="line">SoldierFactory.<span class="keyword">factory</span>.setSoldierType(&#123;<span class="string">'SoldierType'</span>: <span class="string">'Infantry'</span>, <span class="string">'SoldierSpeed'</span>: <span class="number">2</span>, <span class="string">'SoldierHP'</span>: <span class="number">100</span>, <span class="string">'TypeID'</span>: <span class="keyword">null</span>&#125;)</span><br><span class="line"><span class="comment">// &#123;SoldierType: "Infantry", SoldierSpeed: 2, SoldierHP: 100, TypeID: 1&#125;</span></span><br><span class="line"></span><br><span class="line">SoldierFactory.<span class="keyword">factory</span>.setSoldierType(&#123;<span class="string">'SoldierType'</span>: <span class="string">'Cavalry'</span>, <span class="string">'SoldierSpeed'</span>: <span class="number">5</span>, <span class="string">'SoldierHP'</span>: <span class="number">200</span>, <span class="string">'TypeID'</span>: <span class="keyword">null</span>&#125;)</span><br><span class="line"><span class="comment">// &#123;SoldierType: "Cavalry", SoldierSpeed: 5, SoldierHP: 200, TypeID: 2&#125;</span></span><br><span class="line">SoldierFactory.<span class="keyword">factory</span>.showSoldierTypeList();</span><br><span class="line"><span class="comment">// 这个有点多，看图就好。。。</span></span><br><span class="line"></span><br><span class="line">let soldier_01 = <span class="keyword">new</span> Soldier(<span class="number">1</span>, <span class="number">1</span>, <span class="string">'Sam'</span>, &#123;<span class="string">'SoldierType'</span>: <span class="string">'Infantry'</span>, <span class="string">'SoldierSpeed'</span>: <span class="number">2</span>, <span class="string">'SoldierHP'</span>: <span class="number">100</span>, <span class="string">'TypeID'</span>: <span class="number">1</span>&#125;);</span><br><span class="line">soldier_01.xMove();</span><br><span class="line"><span class="comment">// Soldier Sam move 2 along the X-axis</span></span><br><span class="line"></span><br><span class="line">let soldier_02 = <span class="keyword">new</span> Soldier(<span class="number">2</span>, <span class="number">2</span>, <span class="string">'Alan'</span>, &#123;<span class="string">'SoldierType'</span>: <span class="string">'Sniper'</span>, <span class="string">'SoldierSpeed'</span>: <span class="number">1</span>, <span class="string">'SoldierHP'</span>: <span class="number">50</span>, <span class="string">'TypeID'</span>: <span class="keyword">null</span>&#125;);</span><br><span class="line">soldier_02.yMove();</span><br><span class="line"><span class="comment">// Soldier Alan move 1 along the Y-axis</span></span><br><span class="line"></span><br><span class="line">SoldierFactory.<span class="keyword">factory</span>.showSoldierTypeList();</span><br><span class="line"><span class="comment">// 也是有点多，看下面的图吧</span></span><br></pre></td></tr></table></figure>
+<center><img src="https://i.loli.net/2020/06/18/VWKrIa9HgikxwqX.png" alt="2.png"></center>
+
+
+<h2 id="二、结语"><a href="#二、结语" class="headerlink" title="二、结语"></a>二、结语</h2><ul>
+<li><p>享元模式个人认为在游戏里使用得较为多一些，在前端方面除了H5游戏，应该就是花里胡哨的炫技背景之类的了吧。</p>
+</li>
+<li><p>最后强调一点，享元模式里的享元是不可变的，只能新增不能修改。笔者个人猜测可能是因为修改后代价太大吧，牵一发而动全身的感觉。</p>
+</li>
+<li><p>P.S. 终于有时间好好回头来学习一下了Orz，顺带还花了点时间把自己以前写的重新看了一遍，感觉理解更深了那么一丢丢XD。</p>
+</li>
+<li><p>下篇预告：组合模式<del>🐦咕咕咕咕</del></p>
+</li>
+<li><p>参考资料</p>
+<ul>
+<li><a href="https://refactoringguru.cn/design-patterns/flyweight" target="_blank" rel="noopener">https://refactoringguru.cn/design-patterns/flyweight</a><br><br></li>
+</ul>
 </li>
 </ul>
-<h2 id="说在最后的话"><a href="#说在最后的话" class="headerlink" title="说在最后的话"></a>说在最后的话</h2><ul>
-<li><p>念叨念叨着换手机，换了一台8p的官换机，个人感觉还挺实惠的，应该不会出啥子幺蛾子吧，听天由命，听天由命～<del>等出了iphone的5G手机就把你压箱底收藏:P</del></p>
-</li>
-<li><p>最后祝大家六一儿童节快乐～</p>
-</li>
-</ul>
-<p><br><br>上传于2020-06-01</p>
+<p>上传于2020-06-18</p>
 
       
 
@@ -215,7 +254,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TypeScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
@@ -271,7 +318,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://feiyyx.cc/2020/06/01/2020年5月份月度碎碎念/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://feiyyx.cc/2020/06/18/JavaScript设计模式<十四>——享元模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,18 +332,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/06/18/JavaScript设计模式<十四>——享元模式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JavaScript设计模式&lt;十四&gt;——享元模式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/13/Sequelize的一些使用心得/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Sequelize的一些使用心得</div>
+    <a href="/2020/06/01/2020年5月份月度碎碎念/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2020年5月份月度碎碎念</div>
       <i class="icon-circle-right"></i>
     </a>
   
