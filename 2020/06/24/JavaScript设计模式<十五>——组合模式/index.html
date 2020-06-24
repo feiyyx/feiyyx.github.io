@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feiyyx.cc">
-  <title>Archives: 2018/11 | feiyyx&#39;s Blog</title>
+  <title>JavaScript设计模式&lt;十五&gt;——组合模式 | feiyyx&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="feiyyx&#39;s Blog">
-<meta property="og:url" content="http://feiyyx.cc/archives/2018/11/index.html">
+  <meta name="description" content="JavaScript设计模式&amp;lt;十五&amp;gt;——组合模式〇、前言&amp;amp;介绍 这一次带来的是组合模式的学习。">
+<meta name="keywords" content="TypeScript,JavaScript,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript设计模式&lt;十五&gt;——组合模式">
+<meta property="og:url" content="http://feiyyx.cc/2020/06/24/JavaScript设计模式<十五>——组合模式/index.html">
 <meta property="og:site_name" content="feiyyx&#39;s Blog">
+<meta property="og:description" content="JavaScript设计模式&amp;lt;十五&amp;gt;——组合模式〇、前言&amp;amp;介绍 这一次带来的是组合模式的学习。">
 <meta property="og:locale" content="zh-Hans en">
+<meta property="og:image" content="https://i.loli.net/2020/06/24/l7Pu3njkQmeqBvC.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/06/24/XfZuvB2YHtqsDdr.png">
+<meta property="og:updated_time" content="2020-06-24T13:23:02.699Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="feiyyx&#39;s Blog">
+<meta name="twitter:title" content="JavaScript设计模式&lt;十五&gt;——组合模式">
+<meta name="twitter:description" content="JavaScript设计模式&amp;lt;十五&amp;gt;——组合模式〇、前言&amp;amp;介绍 这一次带来的是组合模式的学习。">
+<meta name="twitter:image" content="https://i.loli.net/2020/06/24/l7Pu3njkQmeqBvC.jpg">
   
     <link rel="alternative" href="/atom.xml" title="feiyyx&#39;s Blog" type="application/atom+xml">
   
@@ -154,144 +162,214 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaScript设计模式&lt;十五&gt;——组合模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/18/《Vue.js实战》电商例程pro1/" class="archive-article-date">
-  	<time datetime="2018-11-18T02:01:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/18/《Vue.js实战》电商例程pro1/">《Vue.js实战》电商例程pro1</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript设计模式&lt;十五&gt;——组合模式
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/24/JavaScript设计模式<十五>——组合模式/" class="archive-article-date">
+  	<time datetime="2020-06-24T13:23:02.699Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript设计模式-lt-十五-gt-——组合模式"><a href="#JavaScript设计模式-lt-十五-gt-——组合模式" class="headerlink" title="JavaScript设计模式&lt;十五&gt;——组合模式"></a>JavaScript设计模式&lt;十五&gt;——组合模式</h1><h2 id="〇、前言-amp-介绍"><a href="#〇、前言-amp-介绍" class="headerlink" title="〇、前言&amp;介绍"></a>〇、前言&amp;介绍</h2><ul>
+<li><p>这一次带来的是组合模式的学习。<a id="more"></a></p>
+</li>
+<li><p><em>在软件工程中，组合模式是一种分区设计模式。组合模式描述了一组对象，这些对象被视为同一类型对象的单个实例。组合的目的是将对象“组合”成树形结构以表示部分-整体层次结构。实施组合模式可以使客户端统一对待各个对象和构图。</em>。—摘自<a href="https://zh.wikipedia.org/zh-cn/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">维基百科</a></p>
+</li>
+<li><p>组合模式的关键在于“组合”两字，为了使得这些组件能够组合在一起，我们需要给这些或复杂，或简单的组件都设置一个通用的接口，然后通过这个通用的接口来逐级调用组件，层层递进，最后将结果返回给客户端。这样说得还有些抽象，用代码来说明比较好。</p>
+</li>
+</ul>
+<center><img src="https://i.loli.net/2020/06/24/l7Pu3njkQmeqBvC.jpg" alt="1.jpg"></center>
+
+
+<h2 id="一、分析过程"><a href="#一、分析过程" class="headerlink" title="一、分析过程"></a>一、分析过程</h2><ul>
+<li><p>组合模式结构分为<strong>叶节点、组件、客户端和容器</strong>四个模块。</p>
+</li>
+<li><p><strong>叶节点</strong>和<strong>容器</strong>都是组合树上的对象，他们二者的区别在于，<strong>叶节点</strong>是组合树的最基本的结构，它不拥有子项目；而<strong>容器</strong>则是包含了其他容器或者叶节点的项目，并且它只通过通用的接口与子项目交互且不关心子项目的类型。</p>
+</li>
+<li><p><strong>组件</strong>是一个对象，里面包括了组合树中所有项目的通用接口/方法。</p>
+</li>
+<li><p><strong>客户端</strong>可以通过组件中声明的通用接口与所有项目进行交互，并且能从容器获取返回的数据。</p>
+</li>
+<li><p>这里为了偷懒就直接用Refactoringguru中的产品与盒子的例子来写代码好惹。首先先声明接口组件和叶结点类<code>Dot</code>，并且给这个类设置<code>name</code>和<code>value</code>属性，然后声明<code>showValue</code>方法。</p>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Package &#123;</span><br><span class="line">    showValue();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> Dot <span class="keyword">implements</span> Package &#123;</span><br><span class="line">    <span class="keyword">public</span> name: <span class="built_in">string</span>;</span><br><span class="line">    <span class="keyword">public</span> value: <span class="built_in">number</span>;</span><br><span class="line">    <span class="keyword">constructor</span>(<span class="params">value, name</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    showValue() &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;this.name&#125;</span>'Value = ¥<span class="subst">$&#123;this.value&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>然后是容器，我们声明为<code>SmallBox</code>类，也是按照组件接口来声明<code>showValue</code>方法，并且因为是容器，除了要在内部维护一个存储子容器或者叶节点的数组，而且要给这个类添加增添子项目对象和删除子项目对象的方法。</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> SmallBox <span class="keyword">implements</span> Package &#123;</span><br><span class="line">    <span class="keyword">public</span> items: Dot[] = [];</span><br><span class="line">    <span class="comment">/*--向容器内添加子项目--*/</span></span><br><span class="line">    add(item: Dot) &#123;</span><br><span class="line">        <span class="keyword">this</span>.items.push(item);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*--在容器内删除子项目--*/</span></span><br><span class="line">    remove(name: <span class="built_in">string</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.items) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.items[i].name = name) &#123;</span><br><span class="line">                <span class="keyword">this</span>.items.splice(<span class="built_in">Number</span>(i), <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    showValue() &#123;</span><br><span class="line">        <span class="keyword">let</span> tempSum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> <span class="keyword">this</span>.items) &#123;</span><br><span class="line">            tempSum += <span class="keyword">this</span>.items[i].showValue();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`SmallBox sum = ¥<span class="subst">$&#123;tempSum&#125;</span>`</span>)</span><br><span class="line">        <span class="keyword">return</span> tempSum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>最后来看一下代码的整体效果：</li>
+</ul>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> aBox = <span class="keyword">new</span> SmallBox();</span><br><span class="line"><span class="keyword">let</span> x = <span class="keyword">new</span> Dot(<span class="number">500</span>, <span class="string">'Phone'</span>);</span><br><span class="line"><span class="keyword">let</span> y = <span class="keyword">new</span> Dot(<span class="number">200</span>, <span class="string">'Shoes'</span>);</span><br><span class="line">y.showValue(); <span class="comment">// Shoes'Value = ¥200</span></span><br><span class="line"></span><br><span class="line">aBox.<span class="keyword">add</span>(x);</span><br><span class="line">aBox.<span class="keyword">add</span>(y);</span><br><span class="line">aBox.showValue();</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> Phone'Value = ¥500</span></span><br><span class="line"><span class="comment"> Shoes'Value = ¥200</span></span><br><span class="line"><span class="comment"> SmallBox sum = ¥700</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<center><img src="https://i.loli.net/2020/06/24/XfZuvB2YHtqsDdr.png" alt="2.png"></center>
+
+
+<h2 id="二、结语"><a href="#二、结语" class="headerlink" title="二、结语"></a>二、结语</h2><ul>
+<li><p>要在实际生产中运用组合模式，首先要确认这些组件是否拥有相同的特质可以整合成相同的接口或者方法，当他们拥有相同的接口的时候，就可以通过组合模式将他们生成一棵组合树并构建树状嵌套递归对象结构，之后便可以通过递归来操作或者获取某一子项目的信息。</p>
+</li>
+<li><p>下篇预告：责任链模式<del>🐦咕咕咕咕</del></p>
+</li>
+<li><p>参考资料</p>
+<ul>
+<li><a href="https://refactoringguru.cn/design-patterns/composite" target="_blank" rel="noopener">https://refactoringguru.cn/design-patterns/composite</a><br><br></li>
+</ul>
+</li>
+</ul>
+<p>上传于2020-06-24</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TypeScript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/03/十月碎碎念/" class="archive-article-date">
-  	<time datetime="2018-11-03T04:15:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/03/十月碎碎念/">十月碎碎念（真）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/01/a.b选择器——CSS新特性使用小技巧/" class="archive-article-date">
-  	<time datetime="2018-11-01T11:08:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/01/a.b选择器——CSS新特性使用小技巧/">.a.b选择器——CSS新特性使用小技巧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://feiyyx.cc/2020/06/24/JavaScript设计模式<十五>——组合模式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/18/JavaScript设计模式<十四>——享元模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JavaScript设计模式&lt;十四&gt;——享元模式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
 
           </div>
@@ -315,8 +393,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
