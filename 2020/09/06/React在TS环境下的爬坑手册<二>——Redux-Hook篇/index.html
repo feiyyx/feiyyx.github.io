@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feiyyx.cc">
-  <title>2020年8月份月度碎碎念 | feiyyx&#39;s Blog</title>
+  <title>React在TS环境下的爬坑手册&lt;二&gt;——Redux-Hook篇 | feiyyx&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2020年8月份月度碎碎念碎碎碎……碎碎念 一晃眼已至九月，时间过的还是挺匆忙的，不一会就从指缝间溜走了，虽然在家呆了八个月（相当于放了八个月的假XD），&amp;lt;!–more-—&amp;gt;但是等我真的去公司报道的时候还是觉得时间过的非常快，仿佛一夜之间我就从象牙塔走了出来，成为了一名社畜。  刚到公司报道公司就把我们拉到了在东莞的工业园进行为期七天的培训，在这里认识了各式各样的人，也和我被分配的小组">
-<meta name="keywords" content="杂谈">
+  <meta name="description" content="React及Redux在TS环境下的爬坑手册&amp;lt;二&amp;gt;前言 学习使我快乐！">
+<meta name="keywords" content="TypeScript,React,Redux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020年8月份月度碎碎念">
-<meta property="og:url" content="http://feiyyx.cc/2020/09/04/2020年8月份月度碎碎念/index.html">
+<meta property="og:title" content="React在TS环境下的爬坑手册&lt;二&gt;——Redux-Hook篇">
+<meta property="og:url" content="http://feiyyx.cc/2020/09/06/React在TS环境下的爬坑手册<二>——Redux-Hook篇/index.html">
 <meta property="og:site_name" content="feiyyx&#39;s Blog">
-<meta property="og:description" content="2020年8月份月度碎碎念碎碎碎……碎碎念 一晃眼已至九月，时间过的还是挺匆忙的，不一会就从指缝间溜走了，虽然在家呆了八个月（相当于放了八个月的假XD），&amp;lt;!–more-—&amp;gt;但是等我真的去公司报道的时候还是觉得时间过的非常快，仿佛一夜之间我就从象牙塔走了出来，成为了一名社畜。  刚到公司报道公司就把我们拉到了在东莞的工业园进行为期七天的培训，在这里认识了各式各样的人，也和我被分配的小组">
+<meta property="og:description" content="React及Redux在TS环境下的爬坑手册&amp;lt;二&amp;gt;前言 学习使我快乐！">
 <meta property="og:locale" content="zh-Hans en">
-<meta property="og:updated_time" content="2020-09-04T09:14:20.620Z">
+<meta property="og:image" content="https://i.loli.net/2020/09/05/VbRMaYedBqi9jAT.jpg">
+<meta property="og:updated_time" content="2020-09-06T03:07:48.488Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2020年8月份月度碎碎念">
-<meta name="twitter:description" content="2020年8月份月度碎碎念碎碎碎……碎碎念 一晃眼已至九月，时间过的还是挺匆忙的，不一会就从指缝间溜走了，虽然在家呆了八个月（相当于放了八个月的假XD），&amp;lt;!–more-—&amp;gt;但是等我真的去公司报道的时候还是觉得时间过的非常快，仿佛一夜之间我就从象牙塔走了出来，成为了一名社畜。  刚到公司报道公司就把我们拉到了在东莞的工业园进行为期七天的培训，在这里认识了各式各样的人，也和我被分配的小组">
+<meta name="twitter:title" content="React在TS环境下的爬坑手册&lt;二&gt;——Redux-Hook篇">
+<meta name="twitter:description" content="React及Redux在TS环境下的爬坑手册&amp;lt;二&amp;gt;前言 学习使我快乐！">
+<meta name="twitter:image" content="https://i.loli.net/2020/09/05/VbRMaYedBqi9jAT.jpg">
   
     <link rel="alternative" href="/atom.xml" title="feiyyx&#39;s Blog" type="application/atom+xml">
   
@@ -159,40 +161,78 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2020年8月份月度碎碎念" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-React在TS环境下的爬坑手册&lt;二&gt;——Redux-Hook篇" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      2020年8月份月度碎碎念
+      React在TS环境下的爬坑手册&lt;二&gt;——Redux-Hook篇
     </h1>
   
 
         
-        <a href="/2020/09/04/2020年8月份月度碎碎念/" class="archive-article-date">
-  	<time datetime="2020-09-04T09:14:20.619Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-04</time>
+        <a href="/2020/09/06/React在TS环境下的爬坑手册<二>——Redux-Hook篇/" class="archive-article-date">
+  	<time datetime="2020-09-06T03:07:48.487Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="2020年8月份月度碎碎念"><a href="#2020年8月份月度碎碎念" class="headerlink" title="2020年8月份月度碎碎念"></a>2020年8月份月度碎碎念</h1><h2 id="碎碎碎……碎碎念"><a href="#碎碎碎……碎碎念" class="headerlink" title="碎碎碎……碎碎念"></a>碎碎碎……碎碎念</h2><ul>
-<li><p>一晃眼已至九月，时间过的还是挺匆忙的，不一会就从指缝间溜走了，虽然在家呆了八个月（相当于放了八个月的假XD），&lt;!–more-—&gt;但是等我真的去公司报道的时候还是觉得时间过的非常快，仿佛一夜之间我就从象牙塔走了出来，成为了一名社畜。</p>
+        <h1 id="React及Redux在TS环境下的爬坑手册-lt-二-gt"><a href="#React及Redux在TS环境下的爬坑手册-lt-二-gt" class="headerlink" title="React及Redux在TS环境下的爬坑手册&lt;二&gt;"></a>React及Redux在TS环境下的爬坑手册&lt;二&gt;</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>学习使我快乐！<a id="more"></a></li>
+</ul>
+<h2 id="继续爬坑"><a href="#继续爬坑" class="headerlink" title="继续爬坑"></a>继续爬坑</h2><h3 id="Redux中store数据类型声明（使用Hook）"><a href="#Redux中store数据类型声明（使用Hook）" class="headerlink" title="Redux中store数据类型声明（使用Hook）"></a>Redux中store数据类型声明（使用Hook）</h3><ul>
+<li>在使用了react最新版内的hook后，以前写成的<code>class组件</code>要统统转换成<code>函数式组件</code>，所以我将原来的写法：</li>
+</ul>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component&lt;Props</span>, </span>&#123;&#125;&gt; &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      ...</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改成了:</li>
+</ul>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const App = <span class="function"><span class="params">(props:Props)</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    ...</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>当我们修改成了函数式组件后，我们就可以用上React的最新特性——Hook了。虽然最后使用的RootState的类型判断和之前未使用Hook的一样，不过在这里也是有新的变化，不然我也不会写下这篇文章了XD。</p>
 </li>
-<li><p>刚到公司报道公司就把我们拉到了在东莞的工业园进行为期七天的培训，在这里认识了各式各样的人，也和我被分配的小组成员相识相熟，不过感觉还是有些孤单，身边没有了能够秒懂我cue的梗的二次元小伙伴，反而是现充居多……</p>
+<li><p>最令人欣喜的是在Redux中使用其官方订制的Hook可以将<code>mapStateToProps</code>、<code>mapDispatchToProps</code>和<code>connect</code>给省略掉，对照微软的<a href="https://github.com/microsoft/TypeScript-React-Starter" target="_blank" rel="noopener">TypeScript-React-Starter</a>中的文件分类来看，我们可以省略掉containers文件夹，不过这样的话我们就需要在component也就是组件文件夹中的.tsx文件内引入constants，也就是我更习惯称为action-type文件夹内的action的类型。</p>
 </li>
-<li><p>在培训完第一个礼拜后，后面的三个星期我们要去工厂进行生产实习，我被分配到了Reno4的总装线，听说如果未能完成当日产能，就要加班到晚上七点半，感觉还是有点恐怖的……</p>
-</li>
-<li><p>在生产培训的时候还有一个小插曲，感觉弄出这个插曲的人就很自我为中心，还没有完全走出象牙塔的感觉，虽然我也没有资格说别人就是了，但是这一出真的挺让人反感的，特别是上级已经明确说明清楚情况后还想以人数取胜，都上班了害搁这玩学生时期的min主呐。</p>
+<li><p>还是拿微软这个举例，经过Redux的Hook改造后，最后该组件应该长这样：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment">/*--引入action的type--*/</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> actionType <span class="keyword">from</span> <span class="string">'../../action-type/index'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useSelector, useDispatch &#125; <span class="keyword">from</span> <span class="string">'react-redux'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function">(<span class="params">props:Props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">/*-- 使用useSelector替代mapStateToProps --*/</span></span><br><span class="line">  <span class="keyword">const</span> languageName:string = useSelector(<span class="function">(<span class="params">state: RootState </span>) =&gt;</span> state.enthusiasmState.languageName)</span><br><span class="line">  <span class="keyword">const</span> enthusiasmLevel:number= useSelector(<span class="function">(<span class="params">state: RootState </span>) =&gt;</span> state.enthusiasmState.enthusiasmLevel)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/*-- 使用useDispatch替代mapDispatchToProps --*/</span></span><br><span class="line">  <span class="keyword">const</span> dispatch = useDispatch();</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"hello"</span>&gt;</span><br><span class="line">      &lt;div className=<span class="string">"greeting"</span>&gt;</span><br><span class="line">        Hello &#123;languageName + getExclamationMarks(enthusiasmLevel)&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;div&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button onClick=&#123;() =&gt; dispatch(&#123; type: actionType.DECREMENT_ENTHUSIASM &#125;)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">        &lt;button onClick=&#123;() =&gt; dispatch(&#123; <span class="attr">type</span>: actionType.INCREMENT_ENTHUSIASM &#125;)&#125;&gt;+<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="说在最后的话"><a href="#说在最后的话" class="headerlink" title="说在最后的话"></a>说在最后的话</h2><ul>
-<li>虽然这几个礼拜可能会很辛苦，但是我相信我还是能够坚持下来的（<del>毕竟不坚持下来就没工作了XD</del>）。厂弟生活从今天开始</li>
+<h3 id="关于Redux的一个小贴士"><a href="#关于Redux的一个小贴士" class="headerlink" title="关于Redux的一个小贴士"></a>关于Redux的一个小贴士</h3><ul>
+<li>在搜索如何更优雅地获取Store的类型的时候，我发现了一个十分优雅高贵的写法——使用react-redux@7.1.5库内预留的空白<code>interface DefaultRootState</code>。</li>
 </ul>
-<p><br><br>上传于2020-09-01</p>
+<center><img src="https://i.loli.net/2020/09/05/VbRMaYedBqi9jAT.jpg" alt="1.jpg"></center>
+
+<ul>
+<li><p>这个可供拓展的interface可以说是真的很贴心了，它是官方专门预留给程序员以 <a href="https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-interfaces" target="_blank" rel="noopener">declaration merging</a> 的技巧把字段声明注入到react-redux库预留好的空白<code>interface DefaultRootState</code>中，然后就可以直接从reat-redux中import出DefaultRootState然后开箱即用就好了。</p>
+</li>
+<li><p>我是这样使用的：上一章中我们讲了可以使用<code>ReturnType&lt;typeof T&gt;</code>获取到整合后所有Reducer的类型，然后我们可以将这个方法整合进store.ts</p>
+</li>
+</ul>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// store.ts</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">import</span> &#123; DefaultRootState &#125; <span class="keyword">from</span> <span class="string">"react-redux"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> rootReducer = combineReducers(&#123;x, y, z&#125;)</span><br><span class="line"><span class="keyword">type</span> RootState = ReturnType&lt;<span class="keyword">typeof</span> rootReducer&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">module</span> "react-redux" &#123;</span><br><span class="line">  <span class="comment">// 使用Declaration Merging技巧拓展空白interface</span></span><br><span class="line">  <span class="keyword">interface</span> DefaultRootState <span class="keyword">extends</span> RootState &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> store = createStore(</span><br><span class="line">    rootReducer,</span><br><span class="line">    applyMiddleware(thunk)</span><br><span class="line"> );</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>之后在项目中就可以直接import出来使用了：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// project.ts</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">import</span> &#123; DefaultRootState &#125; <span class="keyword">from</span> <span class="string">"react-redux"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 这样使用完全没问题</span></span><br><span class="line">  <span class="keyword">const</span> x:string = useSelector(<span class="function">(<span class="params">state: DefaultRootState </span>) =&gt;</span> state.x.name)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"hello"</span>&gt;</span><br><span class="line">      &lt;div className=<span class="string">"greeting"</span>&gt;</span><br><span class="line">        Hello &#123; x &#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><ul>
+<li><p>这次的文章主要是记录一下自己在学习react-redux中使用新特性Hook的历程，回过头有时间也许我会专门去学习一下Hook的原理，更深入的去了解React。</p>
+</li>
+<li><p>当然了，Vue3的学习也要提上日程了，也不知道尤大他们究竟修改了多少Api，虽然说学习使我快乐，但是有太多的东西要去学了，稍微有一点绝望呢，这还只是框架原理和业务代码，还有各种架构微服务等着去学呢Orz。</p>
+</li>
+<li><p>下一篇爬坑手册应该会写使用useDispatch()这个方法的学习过程，其他的就学到哪写到哪吧。</p>
+</li>
+<li><p>参考文档：</p>
+<ul>
+<li>掘金 如何让 Redux 和 TypeScript 愉快的玩耍</li>
+<li>Dzone Implementation of React-Redux Hooks With Typescript</li>
+<li>Qiita react-reduxのHooks APIにGenericsは要らない</li>
+</ul>
+</li>
+</ul>
+<p><br><br>上传于2020-09-06</p>
 
       
 
@@ -206,7 +246,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TypeScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redux</a>
         		</li>
       		
 		</ul>
@@ -262,7 +310,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://feiyyx.cc/2020/09/04/2020年8月份月度碎碎念/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://feiyyx.cc/2020/09/06/React在TS环境下的爬坑手册<二>——Redux-Hook篇/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,11 +324,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/09/04/React在TS环境下的爬坑手册<一>——Redux篇/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/09/06/2020年8月份月度碎碎念/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          React在TS环境下的爬坑手册&lt;一&gt;——Redux篇
+          2020年8月份月度碎碎念
         
       </div>
     </a>
@@ -428,15 +476,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -448,15 +496,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">面试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,15 +516,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Redux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,15 +556,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
             
             <div class="clearfix"></div>
