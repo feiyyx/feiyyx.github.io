@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feiyyx.cc">
-  <title>Archives: 2017/11 | feiyyx&#39;s Blog</title>
+  <title>JavaScript设计模式&lt;十六&gt;——责任链模式 | feiyyx&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="feiyyx&#39;s Blog">
-<meta property="og:url" content="http://feiyyx.cc/archives/2017/11/index.html">
+  <meta name="description" content="JavaScript设计模式&amp;lt;十六&amp;gt;——责任链模式〇、前言&amp;amp;介绍 这一次带来的是责任链模式的学习。">
+<meta name="keywords" content="TypeScript,JavaScript,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript设计模式&lt;十六&gt;——责任链模式">
+<meta property="og:url" content="http://feiyyx.cc/2020/09/13/JavaScript设计模式<十六>——责任链模式/index.html">
 <meta property="og:site_name" content="feiyyx&#39;s Blog">
+<meta property="og:description" content="JavaScript设计模式&amp;lt;十六&amp;gt;——责任链模式〇、前言&amp;amp;介绍 这一次带来的是责任链模式的学习。">
 <meta property="og:locale" content="zh-Hans en">
+<meta property="og:image" content="https://i.loli.net/2020/09/12/unN4As3RtavZkEW.jpg">
+<meta property="og:image" content="https://i.loli.net/2020/09/12/R864H1VXtGOlhq7.png">
+<meta property="og:updated_time" content="2020-09-13T01:35:56.225Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="feiyyx&#39;s Blog">
+<meta name="twitter:title" content="JavaScript设计模式&lt;十六&gt;——责任链模式">
+<meta name="twitter:description" content="JavaScript设计模式&amp;lt;十六&amp;gt;——责任链模式〇、前言&amp;amp;介绍 这一次带来的是责任链模式的学习。">
+<meta name="twitter:image" content="https://i.loli.net/2020/09/12/unN4As3RtavZkEW.jpg">
   
     <link rel="alternative" href="/atom.xml" title="feiyyx&#39;s Blog" type="application/atom+xml">
   
@@ -154,194 +162,223 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JavaScript设计模式&lt;十六&gt;——责任链模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/19/初探AJAX/" class="archive-article-date">
-  	<time datetime="2017-11-19T10:06:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/19/初探AJAX/">初探AJAX</a>
+    <h1 class="article-title" itemprop="name">
+      JavaScript设计模式&lt;十六&gt;——责任链模式
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/09/13/JavaScript设计模式<十六>——责任链模式/" class="archive-article-date">
+  	<time datetime="2020-09-13T01:35:56.225Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="JavaScript设计模式-lt-十六-gt-——责任链模式"><a href="#JavaScript设计模式-lt-十六-gt-——责任链模式" class="headerlink" title="JavaScript设计模式&lt;十六&gt;——责任链模式"></a>JavaScript设计模式&lt;十六&gt;——责任链模式</h1><h2 id="〇、前言-amp-介绍"><a href="#〇、前言-amp-介绍" class="headerlink" title="〇、前言&amp;介绍"></a>〇、前言&amp;介绍</h2><ul>
+<li><p>这一次带来的是责任链模式的学习。<a id="more"></a></p>
+</li>
+<li><p>什么是责任链模式？<em>责任链模式在面向对象程序设计里是一种软件设计模式，它包含了一些命令对象和一系列的处理对象。每一个处理对象决定它能处理哪些命令对象，它也知道如何将它不能处理的命令对象传递给该链中的下一个处理对象。该模式还描述了往该处理链的末尾添加新的处理对象的方法</em>。—摘自<a href="https://zh.wikipedia.org/zh-hans/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F" target="_blank" rel="noopener">维基百科</a></p>
+</li>
+<li><p>就如同百科所说，使用了这一模式的程序在收到请求后，每个处理者均可对请求进行处理，或将其传递给链上的下一个处理者。这样的特性其实很像我现在在的手机总装流水线上的工作，在拿到从流水线上游获得的物料后，检查物料是否可以通过自己这项工序的检查或者能否继续组装，若是出现问题则通知对应的负责人进行处理，没有出现问题则交给下一个工序的人处理。</p>
+</li>
+<li><p>哦挖槽，这两者特性还真的蛮像的，是不是冥冥之中自有天意让暂时化身为工人的我来写这篇责任链模式XD。废话少说，下面就show code吧。</p>
+</li>
+</ul>
+<center><img src="https://i.loli.net/2020/09/12/unN4As3RtavZkEW.jpg" alt="1.jpg"></center>
+
+
+<h2 id="一、分析过程"><a href="#一、分析过程" class="headerlink" title="一、分析过程"></a>一、分析过程</h2><ul>
+<li><p>这个设计模式其实真不算是很复杂的模式，我个人认为是属于比较简单就能够理解的设计模式；不过想要最大程度发挥它的用处就得在开始使用它之前做好业务逻辑的需求分析，最好画个图将这条链上的各个处理者的功能明确，以确保这个链表是最简洁、最少冗余的。</p>
+</li>
+<li><p>首先我们先确定处理者所拥有的功能，最简单的就是设置这条链的下一个处理者和它所对应的处理方法，我们命名为<code>setNext()</code>和<code>handle()</code>。</p>
+</li>
+</ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">interface</span> <span class="selector-tag">Handler</span> &#123;</span><br><span class="line">    <span class="selector-tag">setNext</span>(<span class="attribute">handler</span>: Handler)<span class="selector-pseudo">:Handler</span>;</span><br><span class="line">    <span class="selector-tag">handle</span>(<span class="attribute">request</span>: string)<span class="selector-pseudo">:string</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>之后我们使用一个抽象类来实现处理者的基础功能和确定内部变量：</li>
+</ul>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractHandler</span> <span class="title">implements</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> nextHandler: Handler</span><br><span class="line">    <span class="keyword">public</span> setNext(handler: Handler):Handler &#123;</span><br><span class="line">        <span class="keyword">this</span>.nextHandler = handler;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.nextHandler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> handle(request: string): string &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.nextHandler) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.nextHandler.handle(request);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里的私有变量nextHandle直接指向下一个处理者，相当于一个单向链表(单向链表比较简单XD)，然后完善了两个方法的功能。之后我们就通过这个抽象类拓展出我们所需要的实体类：</li>
+</ul>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DiamondVIP</span> <span class="keyword">extends</span> <span class="title">AbstractHandler</span> </span>&#123;</span><br><span class="line">    public handle(request: string):string &#123;</span><br><span class="line">        <span class="keyword">if</span>(request === '钻石会员') &#123;</span><br><span class="line">            <span class="keyword">return</span> `您的身份是【$&#123;request&#125;】`;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.handle(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoldVIP</span> <span class="keyword">extends</span> <span class="title">AbstractHandler</span> </span>&#123;</span><br><span class="line">    public handle(request: string):string &#123;</span><br><span class="line">        <span class="keyword">if</span>(request === '黄金会员') &#123;</span><br><span class="line">            <span class="keyword">return</span> `您的身份是【$&#123;request&#125;】`;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.handle(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SilverVIP</span> <span class="keyword">extends</span> <span class="title">AbstractHandler</span> </span>&#123;</span><br><span class="line">    public handle(request: string):string &#123;</span><br><span class="line">        <span class="keyword">if</span>(request === '白银会员') &#123;</span><br><span class="line">            <span class="keyword">return</span> `您的身份是【$&#123;request&#125;】`;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.handle(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BronzeVIP</span> <span class="keyword">extends</span> <span class="title">AbstractHandler</span> </span>&#123;</span><br><span class="line">    public handle(request: string):string &#123;</span><br><span class="line">        <span class="keyword">if</span>(request === '青铜会员') &#123;</span><br><span class="line">            <span class="keyword">return</span> `您的身份是【$&#123;request&#125;】`;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.handle(request);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>都是很简单的类，来用简单的例子来测试一下结果：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> diamondVIP = <span class="keyword">new</span> DiamondVIP();</span><br><span class="line"><span class="keyword">const</span> goldVIP = <span class="keyword">new</span> GoldVIP();</span><br><span class="line"><span class="keyword">const</span> silverVIP = <span class="keyword">new</span> SilverVIP();</span><br><span class="line"><span class="keyword">const</span> bronzeVIP = <span class="keyword">new</span> BronzeVIP();</span><br><span class="line"></span><br><span class="line">bronzeVIP.setNext(silverVIP).setNext(goldVIP).setNext(diamondVIP);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里我直接使用了refactoringguru的测试方法XD，小小偷个懒</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clientCode</span>(<span class="params">handler: Handler</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> identities = [<span class="string">'钻石会员'</span>, <span class="string">'黄金会员'</span>, <span class="string">'青铜会员'</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> identity <span class="keyword">of</span> identities) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">`进行责任链测试 <span class="subst">$&#123;identity&#125;</span>`</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> result = handler.handle(identity);</span><br><span class="line">        <span class="keyword">if</span> (result) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">`  <span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'未检测到您的身份。'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Chain: 青铜会员 &gt; 黄金会员 &gt; 钻石会员\n'</span>);</span><br><span class="line">clientCode(bronzeVIP);</span><br><span class="line"><span class="comment">// 进行责任链测试 钻石会员</span></span><br><span class="line"><span class="comment">// 您的身份是【钻石会员】</span></span><br><span class="line"><span class="comment">// 进行责任链测试 黄金会员</span></span><br><span class="line"><span class="comment">// 您的身份是【黄金会员】</span></span><br><span class="line"><span class="comment">// 进行责任链测试 青铜会员</span></span><br><span class="line"><span class="comment">// 您的身份是【青铜会员】</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">''</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Subchain: 黄金会员 &gt; 钻石会员\n'</span>);</span><br><span class="line">clientCode(goldVIP);</span><br><span class="line"><span class="comment">// 进行责任链测试 钻石会员</span></span><br><span class="line"><span class="comment">// 您的身份是【钻石会员】</span></span><br><span class="line"><span class="comment">// 进行责任链测试 黄金会员</span></span><br><span class="line"><span class="comment">// 您的身份是【黄金会员】</span></span><br><span class="line"><span class="comment">// 进行责任链测试 青铜会员</span></span><br><span class="line"><span class="comment">// 未检测到您的身份</span></span><br></pre></td></tr></table></figure>
+<center><br><img src="https://i.loli.net/2020/09/12/R864H1VXtGOlhq7.png" alt="2.png"></center>
+
+
+<h2 id="二、结语"><a href="#二、结语" class="headerlink" title="二、结语"></a>二、结语</h2><ul>
+<li><p>若是一个业务逻辑能够按照传入的值按顺序执行与处理，那么这样的逻辑其实就很适合使用责任链模式，我能够想到的有OA系统中请假审批的功能，以及注册时确认身份(通过手机验证码等)等等。</p>
+</li>
+<li><p>还有两个我没能想到的应用场景，refactoringguru里也给出了：</p>
+<ul>
+<li>如果所需处理者及其顺序必须在运行时进行改变，可以使用责任链模式。</li>
+<li>当程序需要使用不同方式处理不同种类请求，而且请求类型和顺序预先未知时，可以使用责任链模式。</li>
+</ul>
+</li>
+<li><p>使用责任链模式的最大的<strong>好处</strong>就在于其符合开闭原则，我们可以向里面新增链条而不修改原有的代码；但是其<strong>坏处</strong>就在于由于是单链条，所以很可能会出现部分请求直到链尾都没法被处理，这也是我们需要去思考的。</p>
+</li>
+<li><p>下篇预告：命令模式<del>🐦咕咕咕咕</del></p>
+</li>
+<li><p>参考资料</p>
+<ul>
+<li>【refactoringguru】<a href="https://refactoringguru.cn/design-patterns/chain-of-responsibility" target="_blank" rel="noopener">责任链模式</a></li>
+<li>【refactoringguru】<a href="https://refactoringguru.cn/design-patterns/chain-of-responsibility/typescript/example" target="_blank" rel="noopener">TypeScript 责任链模式讲解和代码示例</a><br><br></li>
+</ul>
+</li>
+</ul>
+<p>上传于2020-09-13</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">TypeScript</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/05/京东楼梯导航（二）/" class="archive-article-date">
-  	<time datetime="2017-11-05T12:14:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/05/京东楼梯导航（二）/">JD楼梯导航左边栏（二）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://feiyyx.cc/2020/09/13/JavaScript设计模式<十六>——责任链模式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/04/十月份总结/" class="archive-article-date">
-  	<time datetime="2017-11-04T12:20:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/06/React及Redux在TS环境下的爬坑手册<二>——Redux-Hook篇/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React及Redux在TS环境下的爬坑手册&lt;二&gt;——Redux-Hook篇</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/04/十月份总结/">十月小总结</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/03/前端编码规范之CSS（转载）/" class="archive-article-date">
-  	<time datetime="2017-11-03T14:12:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/03/前端编码规范之CSS（转载）/">前端编码规范之CSS（转载）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">转载</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'true'; // required: replace example with your forum shortname
 
-    
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  
 
 
           </div>
@@ -365,8 +402,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
