@@ -156,6 +156,133 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-EggJS与ThinkJS学习心得" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/09/EggJS与ThinkJS学习心得/">EggJS与ThinkJS学习心得</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/09/EggJS与ThinkJS学习心得/" class="archive-article-date">
+  	<time datetime="2020-10-09T15:31:15.680Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="EggJS与ThinkJS学习心得"><a href="#EggJS与ThinkJS学习心得" class="headerlink" title="EggJS与ThinkJS学习心得"></a>EggJS与ThinkJS学习心得</h1><h2 id="0、前言"><a href="#0、前言" class="headerlink" title="0、前言"></a>0、前言</h2><h2 id="1、通过github等外部信息进行对比"><a href="#1、通过github等外部信息进行对比" class="headerlink" title="1、通过github等外部信息进行对比"></a>1、通过github等外部信息进行对比</h2><ul>
+<li><p>由Github的数据来看，EggJS的开发者和用户均比ThinkJS的量级要大很多，从某种程度上来说能证明EggJS的泛用性要比ThinkJS要高一些。</p>
+</li>
+<li><p>由提出的Issue得到回复的速度来看，两者的开发者均是对用户提出的Issue反应及时，基本上提出有价值的Issue当天或者隔天就会有开发者来进行回复。不过仍在open的issue两者应对方式不同，ThinkJS对于问题的Tag稍微少一些，而且在一些需求性的Issue上，若是EggJS内还没有这方面的轮子，他们会给Issue打上一个<code>PR is Welcome</code>的标签，而ThinkJS的开发者虽然也会在帖子内进行回复欢迎PR并给出Koa2的解决方案，但是缺少这么一个鼓励用户提出PR造轮子的形式。</p>
+</li>
+<li><p>从插件方面来看，EggJS的插件数量在Github上可以搜到有200多个，而ThinkJS的插件在官方文档大概只有22个（而且只在2.0版本的官方文档内才有），质量暂且不提，在数量上也可以从侧面佐证了EggJS开发者社区活跃。</p>
+</li>
+<li><p>从我个人方面：EggJS鼎鼎大名逛各大论坛看到了好多次了，而ThinkJS还是导师说了我才知道还有这么个玩意（而且瞬间联想到了ThinkPHP XD）。</p>
+</li>
+</ul>
+<h2 id="2、通过框架开发理念与自身实际感受对比"><a href="#2、通过框架开发理念与自身实际感受对比" class="headerlink" title="2、通过框架开发理念与自身实际感受对比"></a>2、通过框架开发理念与自身实际感受对比</h2><ul>
+<li><p>EggJS在开发方面给自己标榜的是框架的框架。</p>
+<ul>
+<li><p>首先EggJS从结构上践行了“约定优于配置”，它采用了Java内Spring的结构（Controller-&gt;Service），约定了整个框架的业务结构，使得开发者能够在统一的框架下进行开发，减少了后续接手人员的学习成本。</p>
+</li>
+<li><p>在EggJS下的开发还具有渐进性，除了能在extend中为EggJS自带对象进行扩展，同时在开发时抽象出的中间件还可以继续转化，转化成插件之后就可以沉淀在框架中，十分的优雅。</p>
+</li>
+<li><p>还有一点值得说道的就是EggJS的高扩展性，它是有想要打造类似Koa插件百花齐放的野心的，基础的EggJS框架只有很少的必须的插件，其他的基本上就是有了这方面需求后，要用什么插件就直接npm install+写入配置一把梭，比较符合JS开发者自由随性的性格特点。</p>
+</li>
+<li><p>【个人感受】在这方面我的个人感受就是EggJS只是给了你一个开发的基础框架，而要什么砖就要靠自己去拿或者自己去烧，要什么工具也要自己去找或者制作，就感觉定制性挺高的，除去开发约定几乎可以说和原生Koa2没有什么区别，开发起来非常的自由，非常的舒服。就是看完官方文档后找其他工具/板砖的时候又要去翻其他人的文档，这一点稍许令人头疼。</p>
+<p>最后与其说是它约定了这样的业务结构，倒不如说Spring这一套框架真的挺好用的👍（我自己改造Koa2的时候也是这样想的XD），并且将通用中间件转化成插件这一模式真的很优雅，减少了npm包冗余的require代码，使得代码更有可读性。</p>
+</li>
+</ul>
+</li>
+<li><p>ThinkJS在开发方面给自己标榜的是整合了大量的项目最佳实践。</p>
+<ul>
+<li><p>ThinkJS在结构上也是进行了约定，在Spring那一套基础上给Controller与Service层之间添加了一层Logic层处理与校验数据，使得Service层能够更加专注于业务实现，在这一点上算是解决了一个痛点，毕竟绝大部分Node框架是没有Mapper层的。</p>
+</li>
+<li><p>在ThinkJS中也是可以通过extend为其自带对象进行扩展，并且在一种功能有不同解决方案或者项目升级却又想保留老项目的一些配置，这个时候可以在adapter内进行设置。而开发插件可以从中间件入手，通过中间件可以转化成npm包，同样也可以弄成一个扩展插件。</p>
+</li>
+<li><p>ThinkJS最大的特点就是整合，它内置了许多的方法例如Logic层即拿即用的数据校验this.validate()，只需要在logic的js文件中或者config中的validate.js中声明对应的rule即可；又或者比如与数据库进行交互的一些方式方法，只需要在extend里进行挂载即可使用框架内部封装好的模型功能与数据库进行交互，并且这一封装的数据库交互轮子内部功能应有尽有十分完善，使用起来可以说是十分便利了。</p>
+</li>
+<li><p>【个人感受】首先我要先吐槽360官方的这个文档，0202年了居然还有这么丑的官网，还没有腾讯开发者社区搬运版好看，还有就是所有这些api接口能不能另起一页新的并且按照英文首字母排列，实在是太凌乱太散了Orz查的我脑壳痛。</p>
+</li>
+<li><p>在上手ThinkJS后我的感受是全面，开发者将数据传入api-&gt;数据处理+业务选择-&gt;数据库交互-&gt;返回给前端这一条链路事无巨细，一切都给你安排的明明白白。所有工具都存放在ThinkJS这个工具箱里，制式的板砖也给你备好了，只需要使用工具慢慢提升熟练度做起来就行了。配置也极为简单，官方已经将不同用途的config给开发者划分好了，只需要将配置按需注入使用即可。特别是Model映射，简直就是比mybatis的那个自动生成工具还厉害，直接将表的名字命名为js文件就可以进行映射了，对于简单的table就直接省去了我们生成Model的步骤。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3、通过可定制化程度进行对比"><a href="#3、通过可定制化程度进行对比" class="headerlink" title="3、通过可定制化程度进行对比"></a>3、通过可定制化程度进行对比</h2><ul>
+<li><p>EggJS和ThinkJS的可定制化在上一节中其实也有体现。</p>
+</li>
+<li><p>在ThinkJS中，可以将目标功能模块抽象成中间件，之后可以通过npm打包的方式将其打包成一个npm插件，但是如果以npm插件方式打包的话有一个缺点，就是代码与项目是割裂的，如果想要使用这个npm插件的功能，我们需要在主文件中或者新建一个JS文件来使用require引入这个npm插件，这样就会回到了最原始的Koa2框架。</p>
+</li>
+<li><p>在EggJS中同样也能将目标功能模块抽象成中间件，不过之后能将该中间件以EggJS内部插件的方式抽象成一个属于EggJS框架的插件，这个框架内部的插件可以在plugin.js内挂载到app对象上，就不再需要另起一个require来获取代码，这样代码与框架就是一体的，还可以通过EggJS内部的插件适配器来选择同一功能种类的不同插件。当然EggJS也是支持npm插件的，Koa2的插件也都可以使用。- </p>
+</li>
+</ul>
+<h2 id="4、通过源码实现分析"><a href="#4、通过源码实现分析" class="headerlink" title="4、通过源码实现分析"></a>4、通过源码实现分析</h2><ul>
+<li>对不起我太菜了，现在还没法做到这一步Orz，未来<del>应该也许大概可能八成</del>一定可以:P，请允许我留坑（逃）</li>
+</ul>
+<h2 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h2><ul>
+<li>总结一下，通过一段时间的学习，也算是对两者对于标榜自身的那句话有了一定的了解。如果项目较为简单，对于定制化轮子没有那么多需求，那么ThinkJS是一个很好的选择，它的功能真的是很全面，而且只要上手了就可以较快地开发一个项目，十分符合它的“整合了大量的项目最佳实践”。而EggJS更适合有一定项目开发积累的团队，因为需要或者可以复用的插件较多，同时开发框架也需要高度定制化，从这点上也确确实实反应了它的“为企业级框架和应用而生”这句话。</li>
+</ul>
+<p>上传于2020-10-09</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/09/EggJS与ThinkJS学习心得/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020年9月份月度碎碎念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -889,83 +1016,6 @@
 
 
   
-    <article id="post-2020年5月份月度碎碎念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/01/2020年5月份月度碎碎念/">2020年5月份月度碎碎念</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/01/2020年5月份月度碎碎念/" class="archive-article-date">
-  	<time datetime="2020-06-01T06:53:01.661Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2020年5月份月度碎碎念"><a href="#2020年5月份月度碎碎念" class="headerlink" title="2020年5月份月度碎碎念"></a>2020年5月份月度碎碎念</h1><h2 id="碎碎碎……碎碎念"><a href="#碎碎碎……碎碎念" class="headerlink" title="碎碎碎……碎碎念"></a>碎碎碎……碎碎念</h2><ul>
-<li><p>五月份算是功德圆满的一个月。
-        
-          <a class="article-more-a" href="/2020/06/01/2020年5月份月度碎碎念/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂谈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/01/2020年5月份月度碎碎念/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1096,15 +1146,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1116,22 +1170,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sequelize</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">NodeJS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">后端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
@@ -1140,7 +1178,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">NodeJS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">转载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sequelize</a>
               </li>
              
               <li class="article-tag-list-item">
