@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://feiyyx.github.io">
-  <title>初探AJAX | feiyyx&#39;s Blog</title>
+  <title>nodejs入门笔记&lt;一&gt; | feiyyx&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="初探AJAX一、前言 都说一流大学抓学术，二流大学抓教育，三流大学抓纪律，辣鸡大学抓生活。看来你校挺符合最后两点的最近学校破事不少，再加上最近学的有点杂，不是很好凝练总结，所以过了一段时间才有闲工夫坐下了写点东西记录下过去浅浅接触的AJAX">
-<meta name="keywords" content="前端,JavaScript">
+  <meta name="description" content="nodejs入门笔记&amp;lt;一&amp;gt;〇、前言 记录一下在公司内网学习课程的所记的笔记。结合网络上一些比较好的文章来看。">
+<meta name="keywords" content="NodeJS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初探AJAX">
-<meta property="og:url" content="http://feiyyx.github.io/2017/11/19/初探AJAX/index.html">
+<meta property="og:title" content="nodejs入门笔记&lt;一&gt;">
+<meta property="og:url" content="http://feiyyx.github.io/2021/01/17/nodejs入门笔记<一>/index.html">
 <meta property="og:site_name" content="feiyyx&#39;s Blog">
-<meta property="og:description" content="初探AJAX一、前言 都说一流大学抓学术，二流大学抓教育，三流大学抓纪律，辣鸡大学抓生活。看来你校挺符合最后两点的最近学校破事不少，再加上最近学的有点杂，不是很好凝练总结，所以过了一段时间才有闲工夫坐下了写点东西记录下过去浅浅接触的AJAX">
+<meta property="og:description" content="nodejs入门笔记&amp;lt;一&amp;gt;〇、前言 记录一下在公司内网学习课程的所记的笔记。结合网络上一些比较好的文章来看。">
 <meta property="og:locale" content="zh-Hans en">
-<meta property="og:updated_time" content="2017-11-19T10:06:14.000Z">
+<meta property="og:updated_time" content="2021-01-17T07:59:37.518Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初探AJAX">
-<meta name="twitter:description" content="初探AJAX一、前言 都说一流大学抓学术，二流大学抓教育，三流大学抓纪律，辣鸡大学抓生活。看来你校挺符合最后两点的最近学校破事不少，再加上最近学的有点杂，不是很好凝练总结，所以过了一段时间才有闲工夫坐下了写点东西记录下过去浅浅接触的AJAX">
+<meta name="twitter:title" content="nodejs入门笔记&lt;一&gt;">
+<meta name="twitter:description" content="nodejs入门笔记&amp;lt;一&amp;gt;〇、前言 记录一下在公司内网学习课程的所记的笔记。结合网络上一些比较好的文章来看。">
   
     <link rel="alternative" href="/atom.xml" title="feiyyx&#39;s Blog" type="application/atom+xml">
   
@@ -159,71 +159,109 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-初探AJAX" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-nodejs入门笔记&lt;一&gt;" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      初探AJAX
+      nodejs入门笔记&lt;一&gt;
     </h1>
   
 
         
-        <a href="/2017/11/19/初探AJAX/" class="archive-article-date">
-  	<time datetime="2017-11-19T10:06:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-19</time>
+        <a href="/2021/01/17/nodejs入门笔记<一>/" class="archive-article-date">
+  	<time datetime="2021-01-17T07:24:31.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="初探AJAX"><a href="#初探AJAX" class="headerlink" title="初探AJAX"></a>初探AJAX</h1><h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><ul>
-<li><del>都说一流大学抓学术，二流大学抓教育，三流大学抓纪律，辣鸡大学抓生活。看来你校挺符合最后两点的</del>最近学校破事不少，再加上最近学的有点杂，不是很好凝练总结，所以过了一段时间才有闲工夫坐下了写点东西记录下过去浅浅接触的AJAX<a id="more"></a></li>
+        <h1 id="nodejs入门笔记-lt-一-gt"><a href="#nodejs入门笔记-lt-一-gt" class="headerlink" title="nodejs入门笔记&lt;一&gt;"></a>nodejs入门笔记&lt;一&gt;</h1><h2 id="〇、前言"><a href="#〇、前言" class="headerlink" title="〇、前言"></a>〇、前言</h2><ul>
+<li><p>记录一下在公司内网学习课程的所记的笔记。结合网络上一些比较好的文章来看。<a id="more"></a></p>
+</li>
+<li><p><del>所有东西都待自己去敲一遍，但是到底要什么时候才有时间自己敲呢（咕咕咕）</del></p>
+</li>
 </ul>
-<h2 id="二、温故知新"><a href="#二、温故知新" class="headerlink" title="二、温故知新"></a>二、温故知新</h2><p>###AJAX介绍</p>
+<h2 id="一、笔记"><a href="#一、笔记" class="headerlink" title="一、笔记"></a>一、笔记</h2><ul>
+<li><p>知道了NodeJS读取模块时使用的是CommonJS。关于CommonJS与前端模块化的相关资料：<a href="https://juejin.cn/post/6844903576309858318" target="_blank" rel="noopener">前端模块化CommonJS,AMD,CMD,ES6</a></p>
+</li>
+<li><p>了解到npm version的用处以及各个位置(major, minor, patch)的区分，并且懂得了~、^符号是如何工作的：</p>
 <ul>
-<li>“AJAX即“Asynchronous JavaScript and XML”（异步的JavaScript与XML技术），指的是一套综合了多项技术的浏览器端网页开发技术。”</li>
-<li>“使用Ajax的最大优点，就是能在不更新整个页面的前提下维护数据。这使得Web应用程序更为迅捷地回应用户动作，并避免了在网络上发送那些没有改变的信息。<br>Ajax不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。就像DHTML应用程序那样，Ajax应用程序必须在众多不同的浏览器和平台上经过严格的测试。随着Ajax的成熟，一些简化Ajax使用方法的程序库也相继问世。同样，也出现了另一种辅助程序设计的技术，为那些不支持JavaScript的用户提供替代功能。”</li>
-<li>——以上摘抄自维基百科</li>
+<li><p>~： ~1.0.1 =&gt; 匹配大于等于1.0.1的patch版本(例如1.0.1、1.0.2、1.0.3 …不匹配x.x.x和1.x.x)</p>
+</li>
+<li><p>^： ~1.0.1 =&gt; 匹配大于等于1.0.1的patch和minor版本（例：1.0.1、1.0.2、1.1.1…不匹配x.x.x）</p>
+</li>
 </ul>
-<p>###初次接触AJAX</p>
+</li>
+<li><p>了解了Promise是如何诞生的（为了取代迭代器，解决回调地狱）。并且由于其在EventLoop的位置，Promise会在主进程结束后才进行第一轮的触发。</p>
 <ul>
-<li>一开始听到AJAX这个词是在一个视频里，说是可以通过AJAX异步请求达成图片懒加载这一骚操作，正好最近也学到了这个东西，所以自己也尝试着使用了一下。</li>
-<li><p>首先AJAX的核心函数是：</p>
+<li><p>异步解决方案：流程库控制、尾触发和next(中间件)，step(队列)</p>
+</li>
+<li><p>学习资料：</p>
 <ul>
-<li><p><strong>XMLHttpRequest()</strong>： 用于创建 XMLHttpRequest 对象<br>XMLHttpRequest 用于在后台与服务器交换数据。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。其语句为：</p>
-<blockquote>
-<p>variable=new XMLHttpRequest();</p>
-</blockquote>
-<p>其中还有一些基础的子函数：</p>
-</li>
-<li>请求类：<ul>
-<li><strong>open(method,url,async)</strong><br>规定请求的类型、URL 以及是否异步处理请求。<br>method：请求的类型；GET 或 POST<br>url：文件在服务器上的位置<br>async：true（异步）或 false（同步）</li>
-<li><strong>send(string)</strong>:<br>将请求发送到服务器。<br>string：仅用于 POST 请求 </li>
-</ul>
-</li>
-<li>响应类：<ul>
-<li><strong>responseText</strong>    获得字符串形式的响应数据。</li>
-<li><strong>responseXML</strong>    获得 XML 形式的响应数据。</li>
-</ul>
-</li>
-<li>readyState: <ul>
-<li><strong>onreadystatechange</strong> 事件<br>当请求被发送到服务器时，我们需要执行一些基于响应的任务。<br>每当 readyState 改变时，就会触发 onreadystatechange 事件。<br>readyState 属性存有 XMLHttpRequest 的状态信息。<br>下面是 XMLHttpRequest 对象的三个重要的属性：<br><strong>onreadystatechange</strong><br>存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。<br><strong>readyState</strong><br>存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。<br>UNSET 0: 请求未初始<br>OPENED 1: 服务器连接已建立<br>HEADERS_RECEIVED 2: 请求已接收<br>LOADING 3: 请求处理中<br>DONE 4: 请求已完成，且响应已就绪<br><strong>status:</strong><br>200: “OK”<br>404: 未找到页面<br>……</li>
+<li><a href="https://blog.csdn.net/XuM222222/article/details/88582131" target="_blank" rel="noopener">promise到底是在resolve时被推入微任务队列还是在then的时候呢？</a></li>
+<li><a href="https://juejin.cn/post/6844904063570542599#heading-11" target="_blank" rel="noopener">这一次，彻底弄懂 Promise 原理</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>由于时间的关系就只能写个很简陋的小页面来显示一下AJAX的强大之处——异步请求，异步请求的好处就在于不更新页面就能获取数据，并且能够根据用户的想法来决定是否加载数据，链接就在下面。代码就不贴了，都是很基本的代码，没啥值得贴出来的。</p>
-<p>三、感言</p>
-</li>
-</ul>
-<hr>
+<li><p>中间件(BFF - Backend For Front)</p>
 <ul>
-<li>AJAX能用的地方还有许多，最近也只是浅浅地去了解了一下，它在服务器端还有很多的作用，想要弄明白服务器端的作用估计也得等我学些Node.js才能搞得懂了吧<del>（走上全栈的不归路）</del>。唉，真是希望时间能够多一些，好让我多学点东西。</li>
+<li>学习资料（比较少）：</li>
+<li><a href="https://juejin.cn/post/6844903619209199624" target="_blank" rel="noopener">Node.js 中间件模式</a></li>
+<li><a href="https://juejin.cn/post/6844903602511675405" target="_blank" rel="noopener">中间件（middleware）</a></li>
 </ul>
-<p>下面是链接：<br>戳我→  <a href="http://fe1yyx.coding.me/SmallThings/ajax.html" target="_blank" rel="noopener">http://fe1yyx.coding.me/SmallThings/ajax.html</a><br>p.s.别用360浏览器等<del>辣鸡国产</del>浏览器，用Chrome谷歌或者Firefox火狐效果最佳。</p>
+</li>
+<li><p>优点：</p>
+<ul>
+<li><p>前后端彻底分离，即使是后期有微服务迁移，也不需要改动前端代码</p>
+</li>
+<li><p>业务更向前靠拢，琐碎的api由前端开发自己决定，更适配前端框架</p>
+</li>
+<li><p>BFF可以自开mock，插件也能生成API文档（补充：还可以自主进行接口的单元测试）</p>
+</li>
+<li><p>留给后端更清晰的服务边界，只需要提供粗粒度的接口即可</p>
+</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li><p>请求延迟增加</p>
+</li>
+<li><p>前端开发人员开发成本、测试成本、运维成本增加</p>
+</li>
+<li><p>工程化：本地开发(dev-server/mock/hot-reload/live-reload)、编译(babel/scss/pug/Vue/多端同构)、打包(代码压缩/分快)、测试(unit test)、工作流(grunt/npm scripts/ci/gulp)、工具(cli，可视化工具)</p>
+</li>
+</ul>
+</li>
+<li><p>如何自己实现一个cli：</p>
+<ul>
+<li>学习资料：<a href="https://zhuanlan.zhihu.com/p/38730825" target="_blank" rel="noopener">🎉用Node.js开发一个Command Line Interface (CLI)</a> </li>
+</ul>
+<ul>
+<li><p>声明可执行文件</p>
+</li>
+<li><p>接收若干个选项参数（参数处理）【用process.argv获取参数，用commander处理(链式调用)】</p>
+</li>
+<li><p>实现对应的功能</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、结语"><a href="#二、结语" class="headerlink" title="二、结语"></a>二、结语</h2><ul>
+<li><p>不能再这么浪费平时的时间了，还是要好好学习。引入新的TODO模式给自己鞭策一下。</p>
+</li>
+<li><p>下周TODO: </p>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 完成一次自定义cli《Hello World》</li>
+<li style="list-style: none"><input type="checkbox"> 输出SQL课程&lt;二&gt;笔记</li>
+</ul>
+</li>
+</ul>
+<p>上传于2021-01-17</p>
 
       
 
@@ -237,11 +275,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">NodeJS</a>
         		</li>
       		
 		</ul>
@@ -297,7 +331,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://feiyyx.github.io/2017/11/19/初探AJAX/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://feiyyx.github.io/2021/01/17/nodejs入门笔记<一>/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -311,18 +345,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/12/06/Away From November/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Away From November
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/11/05/京东楼梯导航（二）/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JD楼梯导航左边栏（二）</div>
+    <a href="/2021/01/03/2020年11、12月份月度碎碎念/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2020年11、12月份月度碎碎念</div>
       <i class="icon-circle-right"></i>
     </a>
   
