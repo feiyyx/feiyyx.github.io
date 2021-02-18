@@ -16,6 +16,7 @@
 <meta property="og:site_name" content="feiyyx&#39;s Blog">
 <meta property="og:description" content="Hello CLI——记一次CLI入门〇、前言 CLI，也就是命令行界面 (Command-line interface，)是在图形用户界面得到普及之前使用最为广泛的用户界面，它通常不支持鼠标，用户通过键盘输入指令，计算机接收到指令后，予以执行。也有人称之为字符用户界面。—摘自维基百科">
 <meta property="og:locale" content="zh-Hans en">
+<meta property="og:image" content="https://i.loli.net/2021/01/24/hoVF1PrSMsglaBq.jpg">
 <meta property="og:image" content="https://i.loli.net/2021/01/24/UkMBYEc64X8R29r.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/24/oW4rpsgTCQDZwfl.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/24/1ylwK7JHVdtm6SY.png">
@@ -24,11 +25,11 @@
 <meta property="og:image" content="https://i.loli.net/2021/01/24/ApjXyJuO6KFtrlG.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/24/3PspGJv8xuKLMCH.png">
 <meta property="og:image" content="https://i.loli.net/2021/01/24/i8obHtf5JpxjSLR.png">
-<meta property="og:updated_time" content="2021-01-24T06:59:59.222Z">
+<meta property="og:updated_time" content="2021-01-24T07:06:40.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hello CLI——记一次CLI入门">
 <meta name="twitter:description" content="Hello CLI——记一次CLI入门〇、前言 CLI，也就是命令行界面 (Command-line interface，)是在图形用户界面得到普及之前使用最为广泛的用户界面，它通常不支持鼠标，用户通过键盘输入指令，计算机接收到指令后，予以执行。也有人称之为字符用户界面。—摘自维基百科">
-<meta name="twitter:image" content="https://i.loli.net/2021/01/24/UkMBYEc64X8R29r.png">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/24/hoVF1PrSMsglaBq.jpg">
   
     <link rel="alternative" href="/atom.xml" title="feiyyx&#39;s Blog" type="application/atom+xml">
   
@@ -194,30 +195,31 @@
 <li><p>我们平时使用的vue-cli、angular-cli等框架脚手架，以及webpack等工具，都是集成了开发者们经常使用的指令，或者是经常使用的操作，甚至还有一些重复性的机械操作也可以由cli完成。如此一来，开发者就可以省下时间，提升工作效率。</p>
 </li>
 <li><p>废话少说，let’s show code～</p>
+<center><img src="https://i.loli.net/2021/01/24/hoVF1PrSMsglaBq.jpg" alt="0.jpeg"></center>
+
 </li>
 </ul>
 <h2 id="一、动工"><a href="#一、动工" class="headerlink" title="一、动工"></a>一、动工</h2><h3 id="1、初始化npm模块并添加bin文件"><a href="#1、初始化npm模块并添加bin文件" class="headerlink" title="1、初始化npm模块并添加bin文件"></a>1、初始化npm模块并添加bin文件</h3><ul>
-<li>首先我们输入如下指令生成所有使用npm开发的模块的基石——packa ge.json：</li>
+<li>首先我们输入如下指令生成所有使用npm开发的模块的基石——package.json：</li>
 </ul>
 <blockquote>
 <p>npm init -y</p>
 </blockquote>
-<center>![0.jpeg](<a href="https://i.loli.net/2021/01/24/hoVF1PrSMsglaBq.jpg" target="_blank" rel="noopener">https://i.loli.net/2021/01/24/hoVF1PrSMsglaBq.jpg</a></center>
+<center><img src="https://i.loli.net/2021/01/24/UkMBYEc64X8R29r.png" alt="1.png"></center>
 
 <ul>
 <li>然后我们在该目录下新建一个bin文件夹（其用来指定各个内部命令对应的可执行文件的位置）并且同时新建一个index.js文件作为<code>hello</code>指令的入口。</li>
 </ul>
-<center><img src="https://i.loli.net/2021/01/24/UkMBYEc64X8R29r.png" alt="1.png"></center>
-
-<ul>
-<li>在<code>./bin/index.js</code>文件的最上面加上如下代码告诉系统使用node运行该文件：<blockquote>
-</blockquote>
-</li>
-</ul>
 <center><img src="https://i.loli.net/2021/01/24/oW4rpsgTCQDZwfl.png" alt="2.png"></center>
 
 <ul>
-<li>如果没有加上的话会报错：</li>
+<li><p>在<code>./bin/index.js</code>文件的最上面加上如下代码告诉系统使用node运行该文件：</p>
+<blockquote>
+<p>#!/usr/bin/env node</p>
+</blockquote>
+</li>
+<li><p>如果没有加上的话会报错：</p>
+</li>
 </ul>
 <center><img src="https://i.loli.net/2021/01/24/1ylwK7JHVdtm6SY.png" alt="4.png"></center>
 
@@ -243,17 +245,17 @@
 <h3 id="3、为cli添加command模块并更改入口文件的代码"><a href="#3、为cli添加command模块并更改入口文件的代码" class="headerlink" title="3、为cli添加command模块并更改入口文件的代码"></a>3、为cli添加command模块并更改入口文件的代码</h3><ul>
 <li><p>这一步的核心模块是commander模块，它的作用是可以识别你写入cli的命令参数并回调执行一系列方法。首先使用下面这条语句下载这个模块：</p>
 <blockquote>
-<p>npm install commander –save</p>
+<p>npm install commander --save</p>
 </blockquote>
 </li>
 <li><p>然后我们新建一个packages，并在它的目录下新建command文件夹，最后为此添加一个文件<code>init.js</code>。</p>
 </li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> init = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Init Hello CLI!!'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Something happened...'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = init;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// init.js</span></span><br><span class="line"><span class="keyword">const</span> init = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Init Hello CLI!!'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'Something happened...'</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = init;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>这一步完成后还不能立马进行命令的使用，我们还需要改造入口文件：</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"><span class="keyword">const</span> program = <span class="built_in">require</span>(<span class="string">'commander'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> init = <span class="built_in">require</span>(<span class="string">'../packages/command/init'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> configFile = <span class="string">'../packages/hello/config/hello.config.js'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取config参数</span></span><br><span class="line"><span class="keyword">let</span> config = &#123;&#125;;</span><br><span class="line"><span class="keyword">if</span>(fs.existsSync(path.resolve(__dirname, configFile))) &#123;</span><br><span class="line">    config = <span class="built_in">require</span>(path.resolve(__dirname, configFile)) || &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// version &amp; help opitions</span></span><br><span class="line">program</span><br><span class="line">    .version(config.version || <span class="string">'v1.0.0'</span>, <span class="string">'-v --version'</span>)</span><br><span class="line">    .option(<span class="string">'-h --help'</span>, <span class="string">'output usage information'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// init</span></span><br><span class="line">program</span><br><span class="line">    .command(<span class="string">'init'</span>)</span><br><span class="line">    .description(<span class="string">'initialize a hello-cli project'</span>)</span><br><span class="line">    .action(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        init();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取并解析命令行参数</span></span><br><span class="line">program.parse(process.argv);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// bin/index.js</span></span><br><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"><span class="keyword">const</span> program = <span class="built_in">require</span>(<span class="string">'commander'</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">const</span> init = <span class="built_in">require</span>(<span class="string">'../packages/command/init'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> configFile = <span class="string">'../packages/hello/config/hello.config.js'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 获取config参数</span></span><br><span class="line"><span class="keyword">let</span> config = &#123;&#125;;</span><br><span class="line"><span class="keyword">if</span>(fs.existsSync(path.resolve(__dirname, configFile))) &#123;</span><br><span class="line">    config = <span class="built_in">require</span>(path.resolve(__dirname, configFile)) || &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// version &amp; help opitions</span></span><br><span class="line">program</span><br><span class="line">    .version(config.version || <span class="string">'v1.0.0'</span>, <span class="string">'-v --version'</span>)</span><br><span class="line">    .option(<span class="string">'-h --help'</span>, <span class="string">'output usage information'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// init</span></span><br><span class="line">program</span><br><span class="line">    .command(<span class="string">'init'</span>)</span><br><span class="line">    .description(<span class="string">'initialize a hello-cli project'</span>)</span><br><span class="line">    .action(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        init();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 读取并解析命令行参数</span></span><br><span class="line">program.parse(process.argv);</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>关于command模块各个方法的解说网上有很多，这里就不多赘述了，下面我们来看看代码敲完后的效果。</p>
 </li>
@@ -272,16 +274,14 @@
 <h2 id="二、结语"><a href="#二、结语" class="headerlink" title="二、结语"></a>二、结语</h2><ul>
 <li><p>借用他人的话总结一下就是：<code>bin/index.js</code>或者其他自定义的相关文件是主入口文件，而<code>packages/commands</code>专门放主要的命令功能逻辑，根据命令模块划分，比较细的功能实现可以抽成组件放在<code>packages/lib</code>文件夹中，剩余的配置，以及模板等放与cli同名文件夹中。 ——<a href="https://juejin.cn/post/6844903603950338062" target="_blank" rel="noopener">node.js 命令行工具(cli)</a></p>
 </li>
-<li><p>总体来看，搭建一个简单的CLI还是很简单，困难的是如何划分功能模块以及完成想要赋予CLI的功能。这些我都还在学习Orz</p>
+<li><p>总体来看，搭建一个简单的CLI还是很简单，困难的是如何划分功能模块以及完成想要赋予CLI的功能的开发。这些我都还在学习Orz</p>
 </li>
-</ul>
-<p>参考：</p>
+<li><p>参考：</p>
 <ul>
-<li><p><a href="https://zhuanlan.zhihu.com/p/38730825" target="_blank" rel="noopener">用Node.js开发一个Command Line Interface (CLI)</a></p>
-</li>
-<li><p><a href="https://juejin.cn/post/6844903603950338062" target="_blank" rel="noopener">node.js 命令行工具(cli)</a></p>
-</li>
-<li><p><a href="https://juejin.cn/post/6844903857324064782" target="_blank" rel="noopener">Commander.js 中文文档(cli必备)</a></p>
+<li><a href="https://zhuanlan.zhihu.com/p/38730825" target="_blank" rel="noopener">用Node.js开发一个Command Line Interface (CLI)</a></li>
+<li><a href="https://juejin.cn/post/6844903603950338062" target="_blank" rel="noopener">node.js 命令行工具(cli)</a></li>
+<li><a href="https://juejin.cn/post/6844903857324064782" target="_blank" rel="noopener">Commander.js 中文文档(cli必备)</a></li>
+</ul>
 </li>
 </ul>
 <p>上传于2021-01-24</p>
@@ -367,6 +367,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/02/15/2021年1月份月度碎碎念/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          2021年1月份月度碎碎念
+        
+      </div>
+    </a>
   
   
     <a href="/2021/01/17/nodejs入门笔记<一>/" id="article-nav-older" class="article-nav-link-wrap">
@@ -515,15 +524,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">2018</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">TypeScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">前端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">2018</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,11 +552,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
+                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">JQuery</a>
+                <a href="javascript:void(0)" class="js-tag color2">Golang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -579,11 +588,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Koa2</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Koa2</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,6 +601,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">转载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,10 +621,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">学习笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
               </li>
             
             <div class="clearfix"></div>
