@@ -1,4 +1,4 @@
-﻿---
+---
 title: 记一次Vue小项目（一）—— v-on与v-bind的理解
 tags: 
       - Vue
@@ -73,5 +73,5 @@ tags:
 上传于2018-9.22
 
 
-  [1]: http://static.zybuluo.com/feiyyx/50u9k09zektemyvh91qsp0hc/1-1.png
-  [2]: http://static.zybuluo.com/feiyyx/8n2tngzabh0me15cmzwff4lq/1-2.png
+[1]: http://static.zybuluo.com/feiyyx/50u9k09zektemyvh91qsp0hc/1-1.png
+[2]: http://static.zybuluo.com/feiyyx/8n2tngzabh0me15cmzwff4lq/1-2.png
