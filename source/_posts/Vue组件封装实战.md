@@ -1,5 +1,4 @@
 ---
-​-------
 title: Vue组件封装实战
 tags: 
       - Vue
