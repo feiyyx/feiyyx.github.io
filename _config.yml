@@ -78,7 +78,6 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:feiyyx/feiyyx.github.io.git
   branch: gh-pages
 
 jsonContent:
