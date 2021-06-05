@@ -78,9 +78,10 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: 
-    github: git@github.com:feiyyx/feiyyx.github.io.git,master
-    coding: git@e.coding.net:fe1yyx/fe1yyx.coding.me.git,master
+  branch: master
+  # repo: 
+    # github: git@github.com:feiyyx/feiyyx.github.io.git,master
+    # coding: git@e.coding.net:fe1yyx/fe1yyx.coding.me.git,master
   
 
 jsonContent:
